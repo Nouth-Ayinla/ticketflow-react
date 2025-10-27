@@ -4,17 +4,31 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#2563EB" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="TicketFlow - Streamline your support workflow with intelligent ticket management. Track, manage, and resolve customer issues effortlessly."
     />
+    <meta name="author" content="TicketFlow Team" />
+    <meta name="keywords" content="ticket management, support system, helpdesk, customer service, issue tracking" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TicketFlow - Smart Ticket Management" />
+    <meta property="og:description" content="Streamline your support workflow with intelligent ticket management" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="TicketFlow - Smart Ticket Management" />
+    <meta name="twitter:description" content="Streamline your support workflow with intelligent ticket management" />
+    
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -24,11 +38,69 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>TicketFlow - Smart Ticket Management System</title>
+    
+    <style>
+      /* Prevent flash of unstyled content */
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+          'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+          sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Loading screen styles */
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom right, #EFF6FF, #F3E8FF);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      
+      #loading-screen .spinner {
+        width: 50px;
+        height: 50px;
+        border: 4px solid #E5E7EB;
+        border-top-color: #2563EB;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      /* Hide loading screen when React mounts */
+      .app-loaded #loading-screen {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="padding: 20px; text-align: center; font-family: sans-serif;">
+        <h1>JavaScript Required</h1>
+        <p>You need to enable JavaScript to run this application.</p>
+        <p>TicketFlow requires JavaScript to provide an interactive user experience.</p>
+      </div>
+    </noscript>
+    
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="spinner"></div>
+    </div>
+    
+    <!-- React Root Element -->
     <div id="root"></div>
+    
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -39,5 +111,14 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    
+    <script>
+      // Hide loading screen once React is mounted
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          document.body.classList.add('app-loaded');
+        }, 100);
+      });
+    </script>
   </body>
 </html>
